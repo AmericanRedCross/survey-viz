@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Northern Alberta Wildfires Response</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/dc/1.7.5/dc.min.css">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+	</head>
+	<body>
+
+  <div class="container">
+
+    <header class="row header">
+    	<div class="col-md-12">
+    		<h1>Survey</h1>
+    	</div>
+    </header>
+    <hr>
+
+    <div id="loader" class="col-xs-12 text-center">
+    	<p>Survey data may take some time to load depending on your connection speed. Thank you for your patience. Please report any errors to <a href="mailto:daniel.joseph@redcross.org">daniel.joseph@redcross.org</a>.</p>
+    	<img src="img/loading.gif" alt="loading..." />
+    </div>
+
+    <div id="explain" class=row style="padding:0; margin:0; display:none;">
+    	<div class="col-xs-12">
+        <p>Wow, you got that off the Internet? In my day, the Internet was only used to download pornography. And I'd do it again! And perhaps a third time! But that would be it. Ah, the 'Breakfast Club' soundtrack! I can't wait til I'm old enough to feel ways about stuff!</p>
+        <p>You guys realize you live in a sewer, right? Perhaps, but perhaps your civilization is merely the sewer of an even greater society above you! How much did you make me? Then we'll go with that data file!</p>
+        <p>Hey, you add a one and two zeros to that or we walk! You wouldn't. Ask anyway! Fatal. Oh, I always feared he might run off like this. Why, why, why didn't I break his legs? We'll go deliver this crate like professionals, and then we'll go home.</p>
+    	</div>
+    </div>
+    <hr>
+
+    <div class=row style="padding:0; margin:0;">
+    	<div class="data-count">
+        <h4><span class="filter-count"></span> selected out of <span class="total-count "></span> records
+    		<small><a href='javascript:dc.filterAll();dc.redrawAll();' > reset all filters</a></small></h4>
+    	</div>
+    </div><!--  row -->
+		<div class=row style="padding:0; margin:0;">
+    	<ul id="active-filters">
+    	</ul>
+    </div><!--  row -->
+
+    <hr>
+
+    <div class=row style="padding:0; margin:0;">
+    	<div class="chart-small col-sm-4">
+    		<div id="q01_chart" ></div>
+    		<h5>Lorem ipsum 1 <small><a  href='javascript:q01_chart.filterAll();dc.redrawAll();' >reset</a></small></h5>
+    	</div>
+    	<div class="chart-small col-sm-4">
+    		<div id="q02_chart" ></div>
+    		<h5>Lorem ipsum 2 <small><a  href='javascript:q02_chart.filterAll();dc.redrawAll();' >reset</a></small></h5>
+    	</div>
+    	<div class="chart-small col-sm-4">
+    		<div id="q03_chart" ></div>
+    		<h5>Lorem ipsum 3  <small><a  href='javascript:q03_chart.filterAll();dc.redrawAll();' >reset</a></small></h5>
+    	</div>
+    </div><!--  row -->
+
+    <hr>
+
+  </div><!-- container -->
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="js/crossfilter.js" ></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/dc/1.7.5/dc.min.js"></script>
+<script src="js/site.js" ></script>

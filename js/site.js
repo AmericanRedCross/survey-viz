@@ -22,8 +22,7 @@ function throttle() {
     q08_chart.width(chart_small_width).height(chart_small_height);
     /*q09_chart.width(chart_small_width).height(chart_small_height);
     q10_chart.width(chart_small_width).height(chart_small_height);
-    q11_chart.width(chart_small_width).height(chart_small_height);
-    q12_chart.width(chart_small_width).height(chart_small_height); */
+    q11_chart.width(chart_small_width).height(chart_small_height);*/
 
 		dc.renderAll();
 	}, 400);
@@ -93,8 +92,7 @@ function crunchData(){
 	q08_chart = dc.rowChart('#q08_chart');
 	/*q09_chart = dc.rowChart('#q09_chart');
   q10_chart = dc.rowChart('#q10_chart');
-	q11_chart = dc.rowChart('#q11_chart');
-	q12_chart = dc.rowChart('#q12_chart');*/
+	q11_chart = dc.rowChart('#q11_chart');*/
 
 	cf = crossfilter(csv);
 
@@ -119,9 +117,7 @@ function crunchData(){
   cf.q10 = cf.dimension(function(d) {
   	return d["Q10"]; });
 	cf.q11 = cf.dimension(function(d) {
-		return d["Q11"]; });
-	cf.q12 = cf.dimension(function(d) {
-  	return d["Q12"]; });*/
+		return d["Q11"]; });*/
 
 
 
@@ -135,8 +131,7 @@ function crunchData(){
 	var q08 = cf.q08.group();
 	/*var q09 = cf.q03.group();
   var q10 = cf.q01.group();
-	var q11 = cf.q02.group();
-	var q12 = cf.q03.group();*/
+	var q11 = cf.q02.group();*/
 
 	var all = cf.groupAll();
 

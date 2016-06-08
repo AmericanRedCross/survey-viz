@@ -9,18 +9,40 @@ function throttle() {
   }, 200);
 	window.clearTimeout(timer2);
 	timer2 = window.setTimeout(function() {
-		q01_chart.width(chart_small_width).height(chart_small_height);
-		q02_chart.width(chart_small_width).height(chart_small_height);
-		q03_chart.width(chart_small_width).height(chart_small_height);
+    //large charts
+		q01_chart.width(chart_lg_width).height(chart_lg_height);
+    //medium charts
+		q02_chart.width(chart_med_width).height(chart_med_height);
+		q03_chart.width(chart_med_width).height(chart_med_height);
+    q04_chart.width(chart_med_width).height(chart_med_height);
+    q05_chart.width(chart_med_width).height(chart_med_height);
+    //small charts
+    q06_chart.width(chart_small_width).height(chart_small_height);
+    q07_chart.width(chart_small_width).height(chart_small_height);
+    q08_chart.width(chart_small_width).height(chart_small_height);
+    /*q09_chart.width(chart_small_width).height(chart_small_height);
+    q10_chart.width(chart_small_width).height(chart_small_height);
+    q11_chart.width(chart_small_width).height(chart_small_height);
+    q12_chart.width(chart_small_width).height(chart_small_height); */
 
 		dc.renderAll();
 	}, 400);
 }
 
 var chart_small_width, chart_small_height;
+var chart_med_width, chart_med_height;
+var chart_lg_width, chart_lg_height;
+
 var size = function(){
 	chart_small_width = $(".chart-small").width();
 	chart_small_height = 200;
+
+  chart_med_width = $(".chart-med").width();
+  chart_med_height = 400;
+
+  chart_lg_width = $(".chart-lg").width();
+  chart_lg_height = 600;
+
 }
 size();
 
@@ -64,6 +86,15 @@ function crunchData(){
 	q01_chart = dc.rowChart('#q01_chart');
 	q02_chart = dc.rowChart('#q02_chart');
 	q03_chart = dc.rowChart('#q03_chart');
+  q04_chart = dc.rowChart('#q04_chart');
+	q05_chart = dc.rowChart('#q05_chart');
+	q06_chart = dc.rowChart('#q06_chart');
+  q07_chart = dc.rowChart('#q07_chart');
+	q08_chart = dc.rowChart('#q08_chart');
+	/*q09_chart = dc.rowChart('#q09_chart');
+  q10_chart = dc.rowChart('#q10_chart');
+	q11_chart = dc.rowChart('#q11_chart');
+	q12_chart = dc.rowChart('#q12_chart');*/
 
 	cf = crossfilter(csv);
 
@@ -73,14 +104,43 @@ function crunchData(){
 		return d["Q02"]; });
 	cf.q03 = cf.dimension(function(d) {
 		return d["Q03"]; });
+  cf.q04 = cf.dimension(function(d) {
+    return d["Q04"]; });
+  cf.q05 = cf.dimension(function(d) {
+    return d["Q05"]; });
+  cf.q06 = cf.dimension(function(d) {
+    return d["Q06"]; });
+  cf.q07 = cf.dimension(function(d) {
+  	return d["Q07"]; });
+	cf.q08 = cf.dimension(function(d) {
+  	return d["Q08"]; });
+  /*cf.q09 = cf.dimension(function(d) {
+  	return d["Q09"]; });
+  cf.q10 = cf.dimension(function(d) {
+  	return d["Q10"]; });
+	cf.q11 = cf.dimension(function(d) {
+		return d["Q11"]; });
+	cf.q12 = cf.dimension(function(d) {
+  	return d["Q12"]; });*/
+
+
 
 	var q01 = cf.q01.group();
 	var q02 = cf.q02.group();
 	var q03 = cf.q03.group();
+  var q04 = cf.q04.group();
+	var q05 = cf.q05.group();
+	var q06 = cf.q06.group();
+  var q07 = cf.q07.group();
+	var q08 = cf.q08.group();
+	/*var q09 = cf.q03.group();
+  var q10 = cf.q01.group();
+	var q11 = cf.q02.group();
+	var q12 = cf.q03.group();*/
 
-	var all = cf.groupAll();;
+	var all = cf.groupAll();
 
-	q01_chart.width(chart_small_width).height(chart_small_height)
+	q01_chart.width(chart_lg_width).height(chart_lg_height)
 		.dimension(cf.q01).group(q01)
 		.renderlet(function(){
 			dc.events.trigger(function(){
@@ -90,7 +150,13 @@ function crunchData(){
 		.colors(["#d01022"])
 		.colorDomain([0])
 		.colorAccessor(function(d, i){return 0;})
-		.elasticX(true).xAxis().ticks(4);
+        //.xAxis(d3.scale.linear().domain([0, 100])).ticks(4);
+        //.xAxis().tickFormat(function (v) {return v + '%'})
+        //.xAxis()tickValues([25, 50, 75, 100]));
+        //.xAxis().tickFormat(
+            //function(d){return d + '%';});
+    .elasticX(true).xAxis().ticks(4);
+        //.xAxis(d3.svg.axis().tickValues([25, 50, 75, 100]));
 	q02_chart.width(chart_small_width).height(chart_small_height)
 		.dimension(cf.q02).group(q02)
 		.renderlet(function(){
@@ -101,7 +167,7 @@ function crunchData(){
 		.colors(["#d01022"])
 		.colorDomain([0])
 		.colorAccessor(function(d, i){return 0;})
-		.elasticX(true).xAxis().ticks(4);
+		.elasticX(false).xAxis().ticks(4);
 	q03_chart.width(chart_small_width).height(chart_small_height)
 		.dimension(cf.q03).group(q03)
 		.renderlet(function(){
@@ -113,6 +179,61 @@ function crunchData(){
 		.colorDomain([0])
 		.colorAccessor(function(d, i){return 0;})
 		.elasticX(true).xAxis().ticks(4);
+  q04_chart.width(chart_small_width).height(chart_small_height)
+		.dimension(cf.q04).group(q04)
+		.renderlet(function(){
+			dc.events.trigger(function(){
+				displayFilters("Lorem ipsum 4", q04_chart.filters());
+			})
+		})
+		.colors(["#d01022"])
+		.colorDomain([0])
+		.colorAccessor(function(d, i){return 0;})
+		.elasticX(true).xAxis().ticks(4);
+  q05_chart.width(chart_small_width).height(chart_small_height)
+    .dimension(cf.q05).group(q05)
+    .renderlet(function(){
+      dc.events.trigger(function(){
+        displayFilters("Lorem ipsum 5", q05_chart.filters());
+      })
+    })
+    .colors(["#d01022"])
+    .colorDomain([0])
+    .colorAccessor(function(d, i){return 0;})
+    .elasticX(true).xAxis().ticks(4);
+  q06_chart.width(chart_med_width).height(chart_med_height)
+    .dimension(cf.q06).group(q06)
+    .renderlet(function(){
+      dc.events.trigger(function(){
+        displayFilters("Lorem ipsum 6", q06_chart.filters());
+      })
+    })
+    .colors(["#d01022"])
+    .colorDomain([0])
+    .colorAccessor(function(d, i){return 0;})
+    .elasticX(true).xAxis().ticks(4);
+  q07_chart.width(chart_med_width).height(chart_med_height)
+    .dimension(cf.q07).group(q07)
+    .renderlet(function(){
+      dc.events.trigger(function(){
+        displayFilters("Lorem ipsum 7", q07_chart.filters());
+      })
+    })
+    .colors(["#d01022"])
+    .colorDomain([0])
+    .colorAccessor(function(d, i){return 0;})
+    .elasticX(true).xAxis().ticks(4);
+  q08_chart.width(chart_med_width).height(chart_med_height)
+    .dimension(cf.q08).group(q08)
+    .renderlet(function(){
+      dc.events.trigger(function(){
+        displayFilters("Lorem ipsum 8", q08_chart.filters());
+      })
+    })
+    .colors(["#d01022"])
+    .colorDomain([0])
+    .colorAccessor(function(d, i){return 0;})
+    .elasticX(true).xAxis().ticks(4);
 
 	dc.dataCount(".data-count")
 		.dimension(cf)

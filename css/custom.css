@@ -19,3 +19,8 @@ svg {
 .active-filters-text {
 	font-weight: 600;
 }
+
+div.dc-chart{
+	float: none;
+
+}

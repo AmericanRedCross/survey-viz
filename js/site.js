@@ -18,10 +18,11 @@ function throttle() {
     q04_chart.width(chart_small_width).height(chart_small_height);
     q05_chart.width(chart_small_width).height(chart_small_height);
     q06_chart.width(chart_small_width).height(chart_small_height);
-    q07_chart.width(chart_small_width).height(chart_small_height);
+
+    /*q07_chart.width(chart_small_width).height(chart_small_height);
     q08_chart.width(chart_small_width).height(chart_small_height);
     q09_chart.width(chart_small_width).height(chart_small_height);
-    /*q10_chart.width(chart_small_width).height(chart_small_height);
+    q10_chart.width(chart_small_width).height(chart_small_height);
     q11_chart.width(chart_small_width).height(chart_small_height);*/
 
 		dc.renderAll();
@@ -37,10 +38,10 @@ var size = function(){
 	chart_small_height = 200;
 
   chart_med_width = $(".chart-med").width();
-  chart_med_height = 275;
+  chart_med_height = 400;
 
   chart_lg_width = $(".chart-lg").width();
-  chart_lg_height = 400;
+  chart_lg_height = 600;
 
 }
 size();
@@ -90,8 +91,8 @@ function crunchData(){
 	q06_chart = dc.rowChart('#q06_chart');
   q07_chart = dc.rowChart('#q07_chart');
 	q08_chart = dc.rowChart('#q08_chart');
-	q09_chart = dc.rowChart('#q09_chart');
-  /*q10_chart = dc.rowChart('#q10_chart');
+	/*q09_chart = dc.rowChart('#q09_chart');
+  q10_chart = dc.rowChart('#q10_chart');
 	q11_chart = dc.rowChart('#q11_chart');*/
 
 	cf = crossfilter(csv);
@@ -112,9 +113,9 @@ function crunchData(){
   	return d["Q07"]; });
 	cf.q08 = cf.dimension(function(d) {
   	return d["Q08"]; });
-  cf.q09 = cf.dimension(function(d) {
+  /*cf.q09 = cf.dimension(function(d) {
   	return d["Q09"]; });
-  /*cf.q10 = cf.dimension(function(d) {
+  cf.q10 = cf.dimension(function(d) {
   	return d["Q10"]; });
 	cf.q11 = cf.dimension(function(d) {
 		return d["Q11"]; });*/
@@ -129,8 +130,8 @@ function crunchData(){
 	var q06 = cf.q06.group();
   var q07 = cf.q07.group();
 	var q08 = cf.q08.group();
-	var q09 = cf.q03.group();
-  /*var q10 = cf.q01.group();
+	/*var q09 = cf.q03.group();
+  var q10 = cf.q01.group();
 	var q11 = cf.q02.group();*/
 
 	var all = cf.groupAll();
@@ -174,7 +175,7 @@ function crunchData(){
 		.colorDomain([0])
 		.colorAccessor(function(d, i){return 0;})
 		.elasticX(true).xAxis().ticks(4);
-  q04_chart.width(chart_med_width).height(chart_med_height)
+  q04_chart.width(chart_small_width).height(chart_small_height)
 		.dimension(cf.q04).group(q04)
 		.renderlet(function(){
 			dc.events.trigger(function(){
@@ -196,7 +197,7 @@ function crunchData(){
     .colorDomain([0])
     .colorAccessor(function(d, i){return 0;})
     .elasticX(true).xAxis().ticks(4);
-  q06_chart.width(chart_small_width).height(chart_small_height)
+  q06_chart.width(chart_med_width).height(chart_med_height)
     .dimension(cf.q06).group(q06)
     .renderlet(function(){
       dc.events.trigger(function(){
@@ -207,7 +208,7 @@ function crunchData(){
     .colorDomain([0])
     .colorAccessor(function(d, i){return 0;})
     .elasticX(true).xAxis().ticks(4);
-  q07_chart.width(chart_small_width).height(chart_small_height)
+  q07_chart.width(chart_med_width).height(chart_med_height)
     .dimension(cf.q07).group(q07)
     .renderlet(function(){
       dc.events.trigger(function(){
@@ -218,22 +219,11 @@ function crunchData(){
     .colorDomain([0])
     .colorAccessor(function(d, i){return 0;})
     .elasticX(true).xAxis().ticks(4);
-  q08_chart.width(chart_small_width).height(chart_small_height)
+  q08_chart.width(chart_med_width).height(chart_med_height)
     .dimension(cf.q08).group(q08)
     .renderlet(function(){
       dc.events.trigger(function(){
         displayFilters("Lorem ipsum 8", q08_chart.filters());
-      })
-    })
-    .colors(["#d01022"])
-    .colorDomain([0])
-    .colorAccessor(function(d, i){return 0;})
-    .elasticX(true).xAxis().ticks(4);
-  q09_chart.width(chart_small_width).height(chart_small_height)
-    .dimension(cf.q09).group(q09)
-    .renderlet(function(){
-      dc.events.trigger(function(){
-        displayFilters("Lorem ipsum 9", q09_chart.filters());
       })
     })
     .colors(["#d01022"])
